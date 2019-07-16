@@ -44,13 +44,34 @@
               <a class="nav-link" href="{{ url_for('checkout') }}">Checkout</a>
             </li>
 
-            
-            {% if title == 'Title' %}
+            {% if title == 'Change Title' %}
             <li class="nav-item active">
             {% else %}
             <li class="nav-item">
             {% endif %}
-              <a class="nav-link" href="#">Title</a>
+              <a class="nav-link" href="{{ url_for('title') }}">Change Title</a>
+
+
+            {% if title == 'Contact Us' %}
+            <li class="nav-item active">
+            {% else %}
+            <li class="nav-item">
+            {% endif %}
+              <a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
+
+            {% if title == 'Login' %}
+            <li class="nav-item active">
+            {% else %}
+            <li class="nav-item">
+            {% endif %}
+              <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+
+            {% if title == 'Register' %}
+            <li class="nav-item active">
+            {% else %}
+            <li class="nav-item">
+            {% endif %}
+              <a class="nav-link" href="{{ url_for('register') }}">Register</a>
             </li>
           </ul>
         </div>
