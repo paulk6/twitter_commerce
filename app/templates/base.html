@@ -59,28 +59,41 @@
             {% endif %}
               <a class="nav-link" href="{{ url_for('contact') }}">Contact Us</a>
 
-            {% if title == 'Profile' %}
-            <li class="nav-item active">
-            {% else %}
-            <li class="nav-item">
-            {% endif %}
-              <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
-            </li>
 
-            {% if title == 'Login' %}
-            <li class="nav-item active">
-            {% else %}
-            <li class="nav-item">
-            {% endif %}
-              <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+          <!-- if user logged out hide profile and logout, otherwise show -->
+            {% if current_user.is_authenticated %}
+              {% if title == 'Profile' %}
+              <li class="nav-item active">
+              {% else %}
+              <li class="nav-item">
+              {% endif %}
+                <a class="nav-link" href="{{ url_for('profile', username=current_user.username) }}">Profile</a>
+              </li>
 
-            {% if title == 'Register' %}
-            <li class="nav-item active">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+              </li>
+
             {% else %}
-            <li class="nav-item">
+
+
+              {% if title == 'Login' %}
+              <li class="nav-item active">
+              {% else %}
+              <li class="nav-item">
+              {% endif %}
+                <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+
+              {% if title == 'Register' %}
+              <li class="nav-item active">
+              {% else %}
+              <li class="nav-item">
+              {% endif %}
+                <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+              </li>
+            <!-- endif below ends the authentication statement that will either show the login, register routes or the profile, logout routes -->
             {% endif %}
-              <a class="nav-link" href="{{ url_for('register') }}">Register</a>
-            </li>
+
           </ul>
         </div>
       </nav>
