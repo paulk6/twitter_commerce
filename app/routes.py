@@ -176,7 +176,7 @@ def profile(username):
         # step 3: commit the stage to the db
         db.session.commit()
 
-        return redirect(url_for('profile', username='username'))
+        return redirect(url_for('profile', username=current_user.username))
 
     # pass in user via the username taken in
     user=User.query.filter_by(username=username).first()
